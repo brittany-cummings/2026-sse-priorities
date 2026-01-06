@@ -362,7 +362,7 @@ const STATIC_ITEMS = {
         },
         // Allison's items
         {
-            project: 'Galaxy Strategy, Migration, & Launch',
+            project: 'Galaxy LMS Strategy, Migration, & Launch',
             status: 'In Progress',
             priority: '1. Primary',
             notes: '',

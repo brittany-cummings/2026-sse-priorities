@@ -1331,13 +1331,13 @@ body {
     transform: rotate(180deg);
 }
 
-/* GP Brand Header Colors */
+/* GP Brand Header Colors - blue, green, teal pattern */
 .strategy-header .accordion-icon { color: var(--blue); }
-.training-header .accordion-icon { color: var(--green); }
 .tech-header .accordion-icon { color: var(--green); }
-.content-header .accordion-icon { color: var(--green); }
+.training-header .accordion-icon { color: var(--teal); }
 .ld-header .accordion-icon { color: var(--blue); }
-.gpxpress-header .accordion-icon { color: var(--blue); }
+.gpxpress-header .accordion-icon { color: var(--green); }
+.content-header .accordion-icon { color: var(--teal); }
 .all-teams-header .accordion-icon { color: var(--navy); }
 
 /* Subtle left accent on expanded */
@@ -1346,11 +1346,11 @@ body {
 }
 
 .accordion-item.expanded[data-section="strategy"] { border-left-color: var(--blue); }
-.accordion-item.expanded[data-section="training"] { border-left-color: var(--green); }
 .accordion-item.expanded[data-section="technology"] { border-left-color: var(--green); }
-.accordion-item.expanded[data-section="content"] { border-left-color: var(--green); }
+.accordion-item.expanded[data-section="training"] { border-left-color: var(--teal); }
 .accordion-item.expanded[data-section="ld"] { border-left-color: var(--blue); }
-.accordion-item.expanded[data-section="gpxpress"] { border-left-color: var(--blue); }
+.accordion-item.expanded[data-section="gpxpress"] { border-left-color: var(--green); }
+.accordion-item.expanded[data-section="content"] { border-left-color: var(--teal); }
 .accordion-item.expanded[data-section="all-teams"] { border-left-color: var(--navy); }
 
 /* Accordion Content - Collapsible */
@@ -1379,7 +1379,8 @@ body {
 
 .accordion-content li {
     position: relative;
-    padding-left: 1rem;
+    padding-left: 1.25rem;
+    margin-left: 1rem;
     margin-bottom: 0.35rem;
     color: var(--gray-700);
     font-size: 0.875rem;
@@ -1397,16 +1398,22 @@ body {
     background: var(--green);
 }
 
-/* Blue bullets for blue sections */
+/* Section-specific bullet colors - blue, green, teal pattern */
 [data-section="strategy"] .accordion-content li::before,
-[data-section="ld"] .accordion-content li::before,
-[data-section="gpxpress"] .accordion-content li::before {
+[data-section="ld"] .accordion-content li::before {
     background: var(--blue);
 }
 
-[data-section="all-teams"] .accordion-content li::before {
-    background: var(--navy);
+[data-section="training"] .accordion-content li::before,
+[data-section="content"] .accordion-content li::before {
+    background: var(--teal);
 }
+
+[data-section="gpxpress"] .accordion-content li::before {
+    background: var(--green);
+}
+
+/* Green is default, so technology uses default */
 
 /* Focus Labels in Accordion */
 .accordion-content .focus-label {
