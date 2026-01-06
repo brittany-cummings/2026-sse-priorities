@@ -215,14 +215,15 @@
             <div class="summary-header">
                 <h2>1H 2026 PRO SS&E Priorities Summary</h2>
             </div>
-            <div class="priorities-summary-grid">
-                <!-- Strategy (Primary - Large) -->
-                <div class="priority-summary-box strategy-box size-large">
-                    <div class="priority-summary-header">
-                        <i class="ph ph-chart-line-up summary-icon"></i>
-                        <h3>Strategy</h3>
-                    </div>
-                    <div class="priority-summary-content">
+            <div class="summary-accordion">
+                <!-- 1. Strategy - Expanded by default -->
+                <div class="accordion-item expanded" data-section="strategy">
+                    <button class="accordion-header strategy-header">
+                        <i class="ph ph-chart-line-up accordion-icon"></i>
+                        <span class="accordion-title">Strategy</span>
+                        <i class="ph ph-caret-down accordion-chevron"></i>
+                    </button>
+                    <div class="accordion-content">
                         <p class="focus-label">Main Focus Areas:</p>
                         <ul>
                             <li>Salesforce AI Support</li>
@@ -247,13 +248,64 @@
                     </div>
                 </div>
 
-                <!-- L&D (Primary - Large) -->
-                <div class="priority-summary-box ld-box size-large">
-                    <div class="priority-summary-header">
-                        <i class="ph ph-chalkboard-teacher summary-icon"></i>
-                        <h3>L&D</h3>
+                <!-- 2. Sales Technology -->
+                <div class="accordion-item" data-section="technology">
+                    <button class="accordion-header tech-header">
+                        <i class="ph ph-database accordion-icon"></i>
+                        <span class="accordion-title">Sales Technology</span>
+                        <i class="ph ph-caret-down accordion-chevron"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="focus-label">Main Focus Areas:</p>
+                        <ul>
+                            <li>Salesforce AI Support</li>
+                            <li>LinkedIn Sales Navigator</li>
+                            <li>GPXperience POV</li>
+                            <li>Other Salesforce Enhancements</li>
+                        </ul>
                     </div>
-                    <div class="priority-summary-content">
+                </div>
+
+                <!-- 3. Training -->
+                <div class="accordion-item" data-section="training">
+                    <button class="accordion-header training-header">
+                        <i class="ph ph-graduation-cap accordion-icon"></i>
+                        <span class="accordion-title">Training</span>
+                        <i class="ph ph-caret-down accordion-chevron"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="focus-label">Customer Development:</p>
+                        <ul>
+                            <li>DSR Meeting in a Box</li>
+                            <li>DSR Onboarding</li>
+                            <li>Digital Commerce Reinforcement</li>
+                            <li>TBD: Strategic Planning/Best-in-Class JBPs/QBRs</li>
+                        </ul>
+                        <p class="focus-label">End-User Sellers:</p>
+                        <ul>
+                            <li>Prospecting Training</li>
+                            <li>Strategic Selling</li>
+                        </ul>
+                        <p class="focus-label">All Sales:</p>
+                        <ul>
+                            <li>Negotiations Training</li>
+                            <li>Leveraging Technology</li>
+                        </ul>
+                        <p class="focus-label">Supervisors:</p>
+                        <ul>
+                            <li>Empower Supervisor Call Series</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. L&D -->
+                <div class="accordion-item" data-section="ld">
+                    <button class="accordion-header ld-header">
+                        <i class="ph ph-chalkboard-teacher accordion-icon"></i>
+                        <span class="accordion-title">L&D</span>
+                        <i class="ph ph-caret-down accordion-chevron"></i>
+                    </button>
+                    <div class="accordion-content">
                         <p class="focus-label">Omni-Capable Edge Curriculum:</p>
                         <ul>
                             <li>CPG: Leveraging Tech, Economic Thinking, Supply Chain</li>
@@ -279,61 +331,14 @@
                     </div>
                 </div>
 
-                <!-- Training (Primary - Medium) -->
-                <div class="priority-summary-box training-box size-medium">
-                    <div class="priority-summary-header">
-                        <i class="ph ph-graduation-cap summary-icon"></i>
-                        <h3>Training</h3>
-                    </div>
-                    <div class="priority-summary-content">
-                        <p class="focus-label">Customer Development:</p>
-                        <ul>
-                            <li>DSR Meeting in a Box</li>
-                            <li>DSR Onboarding</li>
-                            <li>Digital Commerce Reinforcement</li>
-                            <li>TBD: Strategic Planning/Best-in-Class JBPs/QBRs</li>
-                        </ul>
-                        <p class="focus-label">End-User Sellers:</p>
-                        <ul>
-                            <li>Prospecting Training</li>
-                            <li>Strategic Selling</li>
-                        </ul>
-                        <p class="focus-label">All Sales:</p>
-                        <ul>
-                            <li>Negotiations Training</li>
-                            <li>Leveraging Technology</li>
-                        </ul>
-                        <p class="focus-label">Supervisors:</p>
-                        <ul>
-                            <li>Empower Supervisor Call Series</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Sales Technology (Primary - Medium) -->
-                <div class="priority-summary-box tech-box size-medium">
-                    <div class="priority-summary-header">
-                        <i class="ph ph-database summary-icon"></i>
-                        <h3>Sales Technology</h3>
-                    </div>
-                    <div class="priority-summary-content">
-                        <p class="focus-label">Main Focus Areas:</p>
-                        <ul>
-                            <li>Salesforce AI Support</li>
-                            <li>LinkedIn Sales Navigator</li>
-                            <li>GPXperience POV</li>
-                            <li>Other Salesforce Enhancements</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- GPXpress (Secondary - Medium) -->
-                <div class="priority-summary-box gpxpress-box size-medium">
-                    <div class="priority-summary-header">
-                        <i class="ph ph-headset summary-icon"></i>
-                        <h3>GPXpress</h3>
-                    </div>
-                    <div class="priority-summary-content">
+                <!-- 5. GPXpress -->
+                <div class="accordion-item" data-section="gpxpress">
+                    <button class="accordion-header gpxpress-header">
+                        <i class="ph ph-headset accordion-icon"></i>
+                        <span class="accordion-title">GPXpress</span>
+                        <i class="ph ph-caret-down accordion-chevron"></i>
+                    </button>
+                    <div class="accordion-content">
                         <p class="focus-label">Advance Our Organization:</p>
                         <ul>
                             <li>Supervisor Capability</li>
@@ -360,13 +365,14 @@
                     </div>
                 </div>
 
-                <!-- Content (Tertiary - Small) -->
-                <div class="priority-summary-box content-box size-small">
-                    <div class="priority-summary-header">
-                        <i class="ph ph-article summary-icon"></i>
-                        <h3>Content</h3>
-                    </div>
-                    <div class="priority-summary-content">
+                <!-- 6. Content -->
+                <div class="accordion-item" data-section="content">
+                    <button class="accordion-header content-header">
+                        <i class="ph ph-article accordion-icon"></i>
+                        <span class="accordion-title">Content</span>
+                        <i class="ph ph-caret-down accordion-chevron"></i>
+                    </button>
+                    <div class="accordion-content">
                         <p class="focus-label">Main Focus Areas:</p>
                         <ul>
                             <li>AI-Enabled Presentation Creation</li>
@@ -374,19 +380,12 @@
                         </ul>
                     </div>
                 </div>
+            </div>
 
-                <!-- All Teams (Footer - Full Width) -->
-                <div class="priority-summary-box all-teams-box">
-                    <div class="priority-summary-header">
-                        <i class="ph ph-users-three summary-icon"></i>
-                        <h3>All Teams</h3>
-                    </div>
-                    <div class="priority-summary-content">
-                        <ul>
-                            <li>Anchor Integration support at various points throughout the year</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- All Teams Footer Note -->
+            <div class="all-teams-note">
+                <i class="ph ph-users-three"></i>
+                <span><strong>All Teams:</strong> Almost every team may need to support Anchor integration efforts at some point throughout the year</span>
             </div>
         </div>
 

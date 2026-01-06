@@ -88,6 +88,30 @@ function switchTab(tab) {
     }
     
     renderCurrentTab();
+    
+    // Initialize accordion for summary tab
+    if (tab === 'summary') {
+        initAccordion();
+    }
+}
+
+/**
+ * Initialize accordion functionality for Summary tab
+ * @mitigates App:Summary against unauthorized_modification with read-only toggle behavior
+ */
+function initAccordion() {
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        // Remove existing listeners to prevent duplicates
+        header.replaceWith(header.cloneNode(true));
+    });
+    
+    // Re-attach listeners to fresh elements
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            item.classList.toggle('expanded');
+        });
+    });
 }
 
 /**

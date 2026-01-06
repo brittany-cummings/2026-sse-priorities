@@ -907,21 +907,8 @@ body {
 }
 
 .summary-header {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
-    position: relative;
-}
-
-.summary-header::after {
-    content: "";
-    position: absolute;
-    bottom: -1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--green) 0%, var(--blue) 33%, var(--teal) 66%, var(--navy) 100%);
-    border-radius: 2px;
 }
 
 .summary-header h2 {
@@ -1102,31 +1089,40 @@ body {
     color: var(--navy);
     margin: 0;
     display: inline-block;
-    padding-bottom: 0.5rem;
-    border-bottom: 3px solid var(--green);
+    padding-bottom: 0.6rem;
+    border-bottom: 4px solid var(--green);
 }
 
-/* Masonry Grid Layout */
+
+/* Grid Layout with Named Areas */
 .priorities-summary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+        "strategy strategy training training tech tech"
+        "strategy strategy training training content content"
+        "ld ld ld gpxpress gpxpress gpxpress"
+        "allteams allteams allteams allteams allteams allteams";
     gap: 1rem;
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* Card Sizing Classes */
-.priority-summary-box.size-large {
-    grid-row: span 2;
-}
+/* Grid Area Assignments */
+.strategy-box { grid-area: strategy; }
+.training-box { grid-area: training; }
+.tech-box { grid-area: tech; }
+.content-box { grid-area: content; }
+.ld-box { grid-area: ld; }
+.gpxpress-box { grid-area: gpxpress; }
+.all-teams-box { grid-area: allteams; }
 
-.priority-summary-box.size-medium {
-    grid-row: span 1;
-}
-
+/* Card Sizing Classes - kept for compatibility */
+.priority-summary-box.size-large,
+.priority-summary-box.size-medium,
 .priority-summary-box.size-small {
-    grid-row: span 1;
+    /* Grid areas handle sizing now */
 }
 
 /* Base Card Style - Minimal with left accent */
@@ -1266,6 +1262,191 @@ body {
 
 .out-of-scope-label {
     color: var(--gray-400);
+}
+
+/* ===== Summary Accordion ===== */
+.summary-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.accordion-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    border: 1px solid var(--gray-100);
+    transition: box-shadow 0.2s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion Header Button */
+.accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+.accordion-header:hover {
+    background: var(--gray-50);
+}
+
+.accordion-icon {
+    font-size: 1.25rem;
+    color: var(--gray-400);
+    flex-shrink: 0;
+}
+
+.accordion-title {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.accordion-chevron {
+    font-size: 1.25rem;
+    color: var(--gray-400);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Expanded state - rotate chevron */
+.accordion-item.expanded .accordion-chevron {
+    transform: rotate(180deg);
+}
+
+/* GP Brand Header Colors */
+.strategy-header .accordion-icon { color: var(--blue); }
+.training-header .accordion-icon { color: var(--green); }
+.tech-header .accordion-icon { color: var(--green); }
+.content-header .accordion-icon { color: var(--green); }
+.ld-header .accordion-icon { color: var(--blue); }
+.gpxpress-header .accordion-icon { color: var(--blue); }
+.all-teams-header .accordion-icon { color: var(--navy); }
+
+/* Subtle left accent on expanded */
+.accordion-item.expanded {
+    border-left: 3px solid var(--green);
+}
+
+.accordion-item.expanded[data-section="strategy"] { border-left-color: var(--blue); }
+.accordion-item.expanded[data-section="training"] { border-left-color: var(--green); }
+.accordion-item.expanded[data-section="technology"] { border-left-color: var(--green); }
+.accordion-item.expanded[data-section="content"] { border-left-color: var(--green); }
+.accordion-item.expanded[data-section="ld"] { border-left-color: var(--blue); }
+.accordion-item.expanded[data-section="gpxpress"] { border-left-color: var(--blue); }
+.accordion-item.expanded[data-section="all-teams"] { border-left-color: var(--navy); }
+
+/* Accordion Content - Collapsible */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 1.25rem;
+}
+
+.accordion-item.expanded .accordion-content {
+    max-height: 600px;
+    padding: 0 1.25rem 1.25rem;
+}
+
+/* Accordion Content Styling (reuse existing content styles) */
+.accordion-content ul {
+    list-style: none;
+    margin: 0 0 0.75rem 0;
+    padding: 0;
+}
+
+.accordion-content ul:last-child {
+    margin-bottom: 0;
+}
+
+.accordion-content li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.35rem;
+    color: var(--gray-700);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.accordion-content li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+/* Blue bullets for blue sections */
+[data-section="strategy"] .accordion-content li::before,
+[data-section="ld"] .accordion-content li::before,
+[data-section="gpxpress"] .accordion-content li::before {
+    background: var(--blue);
+}
+
+[data-section="all-teams"] .accordion-content li::before {
+    background: var(--navy);
+}
+
+/* Focus Labels in Accordion */
+.accordion-content .focus-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin: 0 0 0.35rem 0;
+}
+
+.accordion-content .focus-label:not(:first-child) {
+    margin-top: 0.75rem;
+}
+
+/* All Teams accordion - subtle footer style */
+/* All Teams Footer Note */
+.all-teams-note {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 900px;
+    margin: 1.5rem auto 0;
+    padding: 1rem 1.25rem;
+    background: var(--gray-50);
+    border-radius: 8px;
+    border-top: 3px solid var(--navy);
+    color: var(--gray-700);
+    font-size: 0.9rem;
+}
+
+.all-teams-note i {
+    font-size: 1.25rem;
+    color: var(--navy);
+    flex-shrink: 0;
+}
+
+.all-teams-note strong {
+    color: var(--navy);
+    font-weight: 700;
 }
 
 
